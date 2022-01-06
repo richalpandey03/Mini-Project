@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Result</title>
+        <style>
+            body{
+                background: #b7cad8;
+    background-attachment: fixed;
+    background-size:cover;
+}
+/*h1,h2,h3,h4,h5,h6{
+    text-align:center;
+}*/
+a{
+    text-decoration: none;
+    margin: 2px;
+    padding: 2px;
+    border-style:initial;
+    color: black;
+}
+h3{
+    font-size: 30px;
+}
+p{
+    font-size: 20px;
+}
+        </style>
+        <header>
+            <div id="anpr"><h1 align="center">Automatic Number Plate Recognition (ANPR)</h1></div><hr>
+            <nav>
+                <a href="/">Home&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a href="">Contact&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a href="">About us&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a href="">others&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            </nav><hr><br>
+        </header>
+    </head>
+    <body>
+        <u><h3 id="heading" align="center">Detection Result</h3></u>
+        <div id="plate"align="center" >   
+            <p class="result"><%= plateNumber %> </p> 
+         </div>
+        <div id="qr"align="center">
+        <p class="result1">Qr code value : <%= qrvalue %> </p>
+        </div>
+        <div>
+            <p align="center">Comparision result : <%= compare %> </p>
+        </div>
+    </body>
+</html>

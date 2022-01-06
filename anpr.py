@@ -2,11 +2,13 @@ import cv2
 import imutils  # for contouring, resizing, rotation etc
 import numpy as np
 import pytesseract  # this has the ocr functions
+import qrcode
+import os
+
 
 # this is the path where I have downloaded tesseract folder
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
-image = cv2.imread('car1.jpg', cv2.IMREAD_COLOR)
+image = cv2.imread('car/car.jpeg', cv2.IMREAD_COLOR)
 
 # avoiding extra resolution and making sure licence plate remains in the frame
 image = cv2.resize(image, (600, 400))
@@ -73,11 +75,49 @@ Cropped = gray[topx:bottomx + 1, topy:bottomy + 1]
 # numbered from 0-13. we need them because here we are working with group of characters and 11 means treat image
 # as single character
 txt = pytesseract.image_to_string(Cropped, config='--psm 11')
-print("Detected license plate Number is:", txt)
-img = cv2.resize(image, (500, 300))
-Cropped = cv2.resize(Cropped, (400, 200))
-cv2.imshow('car', img)
-cv2.imshow('Cropped', Cropped)
+a = ''.join(filter(str.isalnum, txt))
+a.replace(" ", "")
+print("Detected license plate Number is:", a)
+
+# img = cv2.resize(image, (500, 300))
+# Cropped = cv2.resize(Cropped, (400, 200))
+# cv2.imshow('car', img)
+
+def fileReomve():
+    os.remove("car/car.jpeg")
+    os.remove("qrimg/qr.png")
+    exit(0)
+
+
+im = cv2.imread('qrimg/qr.png')
+# print(im)
+det = cv2.QRCodeDetector()
+retval, points, straight_qrcode = det.detectAndDecode(im)
+print(retval)
+c = 0
+a2 = a[::-1]
+#print(a2)
+retval2 = retval[::-1]
+#print(retval2)
+if len(a2) == len(retval2):
+    size = min(len(a2), len(retval2))
+    for i in range(size):
+        if a2[i] == retval2[i]:
+            c = c + 1
+    if 2 <= c <= 8:
+        print("Valid\n")
+        fileReomve()
+    if c > 9:
+        print("Perfect\n")
+        fileReomve()
+    print("Error at position ", c, " from reverse    \n")
+    print("May have small errors but Valid only, proceed with qr\n")
+    fileReomve()
+else:
+    print("Not able to match license plates due to length of text issues\n")
+    fileReomve()
+
+
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()

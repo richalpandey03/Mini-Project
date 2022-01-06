@@ -1,0 +1,83 @@
+body{
+    background-image: url('pic1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+}
+h1,h2,h3,h4,h5,h6,p{
+    text-align:center;
+}
+#qr{
+    position: absolute;
+   float: left; 
+   top:25%;
+   width: 25%;
+   height:280px;
+   left:10%;
+   border-style:solid ;
+   
+   border-radius: 8px;
+}
+#pic{
+    
+    border-radius: 8px;
+    position: absolute;
+    float: left;
+    top:25%;
+    left: 60%;
+    width:25%;
+    height:280px;
+    border-style:solid;
+    
+}
+.upload{
+    position: relative;
+    left: 30%;
+    top: 30%;
+    padding:4px;
+    margin: 20px;
+    width: 30%;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+#detect{
+    position: absolute;
+    left: 40%;
+    top:70%;
+    box-align:center ;
+    padding:4px;
+    margin: 20px;
+    width: 10%;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+#file1,#file2{
+    position: absolute;
+    top: 30%;
+    left: 20%;
+
+}
+a{
+    text-decoration: none;
+    margin: 2px;
+    padding: 2px;
+    border-style:initial;
+    color: black;
+}
+button:hover{
+        background-color: #635a5a; /* Green */
+        color: white;
+}
+.file1, .file2{
+
+    border-radius: 8px;
+}
+footer {
+    display: block;
+  }
+  
+p{
+    position: relative;
+    top: 33%;
+    font-size: 20px;
+}
